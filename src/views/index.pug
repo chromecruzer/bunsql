@@ -1,0 +1,28 @@
+doctype html
+html
+  head
+    title User Management
+    script(src="https://unpkg.com/htmx.org@1.7.0")
+  body
+    h1 User Management
+
+    //- Form to Add a New User
+    form(hx-post="/users" hx-target="#user-list" hx-swap="innerHTML")
+      label Name: 
+        input(type="text" name="name" required)
+      label Email: 
+        input(type="email" name="email" required)
+      button(type="submit") Add User
+
+    h2 Users
+    //- User List
+    div#user-list
+      each user in users
+        div
+          | #{user.name} (#{user.email})
+          button(hx-delete=`/users/${user.id}` hx-target="#user-list" hx-swap="innerHTML") Delete
+          button(hx-get=`/users/${user.id}/edit` hx-target="#edit-user" hx-swap="innerHTML") Edit
+
+    //- Edit Form for a User
+    div#edit-user
+      // Empty initially. Filled via HTMX when editing a user.

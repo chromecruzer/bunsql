@@ -1,16 +1,16 @@
 {
   "name": "my-app",
   "scripts": {
-    "post-install": "cd node_modules/@bunvader/rustacean && bun i && bun run build",
     "dev": "bun run --hot src/index.ts",
-    "build": "bun build src/index.ts --packages external --outfile bundle.main.js",
+    "build": "bun build src/index.ts --packages external --outfile bundle.main.js --minify --sourcemap",
     "start": "bun run --smol bundle.main.js"
   },
   "dependencies": {
-    "@bunvader/rustacean": "^0.0.2",
-    "hono": "^4.6.3"
+    "hono": "^4.6.9",
+    "pug": "^3.0.3"
   },
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "@types/pug": "^2.0.10"
   }
 }

@@ -1,0 +1,6 @@
+form(hx-put=`/users/${user?.id || ''}` hx-target="#user-list" hx-swap="innerHTML")
+  label Name:
+    input(type="text" name="name" value=user?.name required)
+  label Email:
+    input(type="email" name="email" value=user?.email required)
+  button(type="submit") Update User

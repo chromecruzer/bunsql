@@ -1,0 +1,6 @@
+div#user-list
+  each user in users
+    div
+      | #{user.name} (#{user.email})
+      button(hx-delete=`/users/${user.id}` hx-target="#user-list" hx-swap="innerHTML") Delete
+      button(hx-get=`/users/${user.id}/edit` hx-target="#edit-user" hx-swap="innerHTML") Edit
